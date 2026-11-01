@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1019">
+  <title>CZN Combat Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark">C0</span>
+      <div><p>Chaos Zero Nightmare</p><h1>Combat Lab</h1></div>
+    </div>
+    <div class="header-actions">
+      <button id="import-button" type="button">Import</button>
+      <button id="export-button" type="button">Export</button>
+      <button id="save-button" type="button">Save</button>
+      <button id="load-button" type="button">Load</button>
+      <button id="reset-button" type="button" class="danger-quiet">Reset</button>
+      <label class="sandbox-toggle"><input id="sandbox-toggle" type="checkbox"> Sandbox override</label>
+      <button id="start-battle" class="primary-button" type="button">Enter battle</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <div id="toast" class="toast" hidden></div>
+    <section id="setup-screen" class="screen">
+      <nav id="slot-tabs" class="slot-tabs" aria-label="Combatant slots"></nav>
+      <div class="builder-layout">
+        <section class="panel build-workspace">
+          <div id="slot-header"></div>
+          <nav id="build-tabs" class="build-tabs" aria-label="Build sections"></nav>
+          <div id="build-content"></div>
+        </section>
+        <aside class="right-rail">
+          <section class="panel" id="validation-panel"></section>
+          <section class="panel" id="enemy-panel"></section>
+        </aside>
+      </div>
+    </section>
+
+    <section id="battle-screen" class="screen" hidden>
+      <div class="battle-toolbar">
+        <button id="leave-battle" type="button">← Edit build</button>
+        <div><span id="turn-label">Turn 1</span><strong id="ap-label">3 AP</strong></div>
+        <button id="restart-battle" type="button">Restart</button>
+      </div>
+      <section class="battlefield">
+        <article id="enemy-board" class="combat-board enemy-board"></article>
+        <div class="versus">VS</div>
+        <div id="party-board" class="party-board"></div>
+      </section>
+      <section class="panel hand-panel">
+        <div class="panel-heading"><div><p class="kicker">Player phase</p><h2>Your hand</h2></div><div id="pile-counts"></div></div>
+        <div id="hand" class="hand"></div>
+        <div class="hand-footer"><p id="battle-hint">Choose a card to resolve its extracted skill logic.</p><button id="end-turn" class="primary-button" type="button">End turn</button></div>
+      </section>
+      <div class="battle-bottom">
+        <section class="panel"><div class="panel-heading"><h2>Active effects</h2></div><div id="active-effects" class="effect-list"></div></section>
+        <section class="panel"><div class="panel-heading"><h2>Resolution trace</h2></div><div id="battle-log" class="battle-log"></div></section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="card-editor"><div id="card-editor-content"></div></dialog>
+  <dialog id="import-dialog"><div id="import-content"></div></dialog>
+  <dialog id="export-dialog"><div id="export-content"></div></dialog>
+  <dialog id="result-dialog"><div id="result-content"></div><form method="dialog"><button>Close</button></form></dialog>
+  <input id="load-file" type="file" accept=".json,.txt,.cznsave" hidden>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
